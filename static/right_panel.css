@@ -1,0 +1,57 @@
+div.main_wrapper{
+    height:100vh;
+    width:100vw;
+}
+div.code_panel{
+    float:left;
+    height:100vh;
+}
+div.right_panel{
+    padding:0px;
+    margin:0px;
+    box-sizing: border-box;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column ;
+}
+div.right_panel div.main{
+    position:relative;
+    height:50%;
+}
+div.right_panel div.v_seperater{
+    height:10px;
+    left:0px;
+}
+div.right_panel div.h_seperater{
+    width:20px;
+    height:100%;
+}
+div.right_panel div.cycle_wrapper{
+    overflow: -moz-scrollbars-vertical; 
+    overflow-y: scroll;
+    margin: 15px 0 0 25px;
+    box-sizing: border-box;
+    height:90%;
+}
+div.right_panel div.cycle_object{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+div.right_panel div.cycle_object div.num{
+    flex-grow: 1;
+    border:1px solid black;
+}
+div.right_panel div.cycle_object div.cycle{
+    flex-grow: 4;
+    border:1px solid black;
+}
+div.right_panel div.num{
+
+}
+div.right_panel div.cycle{
+
+}
