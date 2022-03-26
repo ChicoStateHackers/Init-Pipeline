@@ -44,10 +44,12 @@ div.right_panel div.cycle_object{
 div.right_panel div.cycle_object div.num{
     flex-grow: 1;
     border:1px solid black;
+    height:50px;
 }
 div.right_panel div.cycle_object div.cycle{
     flex-grow: 4;
     border:1px solid black;
+    height:50px;
 }
 div.right_panel div.num{
 
