@@ -29,4 +29,4 @@ instruction.o: instruction.cpp instruction.h
 
 
 clean: 
-	rm *o $(TARGET)
+	rm *o $(TARGET) statefile.csv
