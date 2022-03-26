@@ -19,8 +19,11 @@ class State {
 
     public:
         State();
-        State(std::string in_fetch_nm, std::string in_decode_nm, std::string in_execute_nm, std::string in_memory_nm, std::string in_writeback_nm);
+        State(uint64_t cycle, std::string in_fetch_nm, std::string in_decode_nm, std::string in_execute_nm, std::string in_memory_nm, std::string in_writeback_nm);
         ~State();
+
+        State* next;
+        State* prev;
 
         uint64_t get_cycle_num();
         std::string get_in_fetch();
@@ -28,6 +31,14 @@ class State {
         std::string get_in_execute();
         std::string get_in_memory();
         std::string get_in_writeback();
+
+        void set_next(State* n);
+        void set_prev(State* p);
+
+        State* get_next();
+        State* get_prev();
+
+        std::string state_to_csv(); 
 
 };
 

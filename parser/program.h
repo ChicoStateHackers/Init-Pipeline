@@ -10,10 +10,14 @@
 class Program {
 
     private:
-        std::string input_asm; 
+        std::string input_asm_file; 
         std::vector<std::string> instructions_vec;
         uint64_t cur_line; 
-        State cur_state; 
+        //State* cur_state;
+        State* head_state;
+
+        //returns pointer to first state in state list
+        void generate_states();
 
     public:
         // Constructor takes in the name of the file to be parsed
@@ -25,7 +29,6 @@ class Program {
         State back_cycle();
 
         void print_instructions();
-
         void generate_state_file();
 
 };

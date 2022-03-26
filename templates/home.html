@@ -14,6 +14,7 @@
     {% load static %}
     <link rel="stylesheet" href="../static/right_panel.css">
     <link rel="stylesheet" href="../static/left_panel.css">
+    <link rel="stylesheet" href="../static/instruction_styles.css">
 </head>
 <body>
 
@@ -28,8 +29,8 @@
                 </div>
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <input type="file" name="myfile">
-                    <button type="submit">Upload</button>
+                    <input type="file" name="myfile" class="input_file"style="float:left;">
+                    <button type="submit" class="upload_button btn-sm btn-success m-1">Upload</button>
                   </form>
                 <!--
                 <input type="file"class="input_file"style="float:left;"></input>
@@ -67,14 +68,14 @@
 
                 <div class="cycle_wrapper">
                     {% for instruction in instruction_data %}
-                        <div class="cycle_object">
-                            <div class="num">{{ instruction.cycle }}</div>
-                            <div class="cycle b1"> {{ instruction.fetch }} </div>
-                            <div class="cycle b2"> {{ instruction.decode }} </div>
-                            <div class="cycle b3"> {{ instruction.execute }} </div>
-                            <div class="cycle b4"> {{ instruction.memory }} </div>
-                            <div class="cycle b5"> {{ instruction.write_back }} </div>
-                        </div>
+                    <div class="cycle_object">
+                        <div class="num">{{ instruction.cycle }}</div>
+                        <div class="cycle b1 {{ instruction.fetch }}"> {{ instruction.fetch }} </div>
+                        <div class="cycle b2 {{ instruction.decode }}"> {{ instruction.decode }} </div>
+                        <div class="cycle b3 {{ instruction.execute }}"> {{ instruction.execute }} </div>
+                        <div class="cycle b4 {{ instruction.memory }}"> {{ instruction.memory }} </div>
+                        <div class="cycle b5 {{ instruction.write_back }}"> {{ instruction.write_back }} </div>
+                    </div>
                     {% endfor %}
                 </div>
             </div>
