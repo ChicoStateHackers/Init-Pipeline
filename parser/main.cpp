@@ -1,13 +1,13 @@
-
-
 #include <iostream>
 
 #include "program.h"
+#include "state.h"
+#include "instruction.h"
 #include "debug_macros.h"
+
 
 int main()
 {
-
     DEBUG_STDERR("Test Start!\n");
 
     Program p("tst.asm");

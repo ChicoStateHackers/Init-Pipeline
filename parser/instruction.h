@@ -6,19 +6,12 @@
 class Instruction {
 
     private: 
-
-        // Instruction Name
-        std::string name; 
+        std::string name; // Instruction Name
     
     public:
-
-        // Constructor
+        Instruction();
         Instruction(std::string nm); 
-
-        // Destructor
         ~Instruction();
-
-        // Getter for Name
         std::string get_name(); 
    
 };

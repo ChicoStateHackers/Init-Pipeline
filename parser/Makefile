@@ -7,14 +7,25 @@ TARGET   = run
 
 all: build
 
-build: main.o instruction.o
-	$(CXX) -o $(BUILD)/$(TARGET) main.o
+build: main.o program.o instruction.o state.o 
+	$(CXX) -o run main.o program.o instruction.o state.o
 
-main.o: main.cpp
+main.o: main.cpp program.h
 	$(CXX) -c $(CXXFLAGS)  main.cpp 
+
+program.o: program.cpp program.h state.h state.o
+	$(CXX) -c $(CXXFLAGS)  program.cpp  
+
+state.o: state.cpp state.h instruction.o
+	$(CXX) -c $(CXXFLAGS)  state.cpp 
 
 instruction.o: instruction.cpp instruction.h
 	$(CXX) -c $(CXXFLAGS) instruction.cpp
+
+
+
+
+
 
 
 clean: 
