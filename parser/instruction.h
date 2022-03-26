@@ -13,7 +13,7 @@ class Instruction {
     public:
 
         // Constructor
-        Instruction(); 
+        Instruction(std::string nm); 
 
         // Destructor
         ~Instruction();
@@ -22,6 +22,5 @@ class Instruction {
         std::string get_name(); 
    
 };
-
 
 #endif 
