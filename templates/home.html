@@ -11,6 +11,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- My CSS -->
+    {% load static %}
     <link rel="stylesheet" href="../static/right_panel.css">
     <link rel="stylesheet" href="../static/left_panel.css">
 </head>
@@ -40,7 +41,13 @@
             <div class="visual_panel main col-sm-12">
                 <div class="v_seperater bg-dark col-sm-12"style="position:absolute;bottom:0px;"></div>
                 <div class="h_seperater bg-dark"style="position:absolute;top:0px;left:0px;"></div>
-                visual
+                <div class="circuit_image_holder">
+                    <img class="circuit_image" src={% static "fetch_circuit.png" %} />
+                    <img class="circuit_image" src={% static "decode_circuit.png" %} />
+                    <img class="circuit_image" src={% static "execute_circuit.png" %} />
+                    <img class="circuit_image" src={% static "memory_circuit.png" %} />
+                    <img class="circuit_image" src={% static "writeback_circuit.png" %} />
+                </div>
             </div>
 
             <div class="grid_panel main col-sm-12">

@@ -49,6 +49,18 @@ div.right_panel div.cycle_object div.cycle{
     height:100%;
     width:19%;
 }
+div.right_panel div.circuit_image_holder{
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+div.right_panel img.circuit_image{
+    padding:0;
+    margin:0;
+    width:18%;
+    height:auto;
+}
 div.right_panel div.num{
 
 }
