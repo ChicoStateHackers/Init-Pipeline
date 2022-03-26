@@ -1,19 +1,9 @@
 
-// Actually might want to but these macros in a header somewhere?
-// Might be usefule elsewhere
-#define DEBUG
-
-#ifdef DEBUG
-#define DEBUG_STDERR(x) (std::cerr << (x))
-#define DEBUG_STDOUT(x) (std::cout << (x))
-#else 
-#define DEBUG_STDERR(x)
-#define DEBUG_STDOUT(x)
-#endif
 
 #include <iostream>
 
 #include "program.h"
+#include "debug_macros.h"
 
 int main()
 {
