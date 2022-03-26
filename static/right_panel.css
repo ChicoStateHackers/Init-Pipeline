@@ -60,7 +60,11 @@ div.right_panel div.circuit_image_holder{
 }
 div.right_panel img.circuit_image{
     padding:0;
-    margin:0;
+    margin:2px;
     width:18%;
     height:auto;
+    box-sizing: content-box;
+}
+img.circuit_image.highlight{
+    border: 2px solid red;
 }

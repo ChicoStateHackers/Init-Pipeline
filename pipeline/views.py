@@ -2,7 +2,6 @@ from init_pipeline.settings import STATIC_DIR, PARSER_DIR
 from django.shortcuts import render
 import subprocess, csv, os
 from pipeline.models import Cycle_Data
-from pipeline.forms import UploadFileForm
 from django.core.files.storage import FileSystemStorage
 
 
