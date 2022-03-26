@@ -1,0 +1,19 @@
+div.main_wrapper{
+    height:100vh;
+    width:100vw;
+}
+div.code_panel{
+    float:left;
+    height:100vh;
+}
+div.right_panels{
+
+}
+
+div.visual_panel{
+    float:left;
+    
+}
+div.grid_panel{
+    float:left;
+}
