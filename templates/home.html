@@ -56,7 +56,6 @@
                 <div class="h_seperater bg-dark"style="position:absolute;top:0px;left:0px;"></div>
 
                 <div class="cycle_wrapper">
-
                     {% for instruction in instruction_data %}
                         <div class="cycle_object">
                             <div class="num">{{ instruction.cycle }}</div>
@@ -70,10 +69,8 @@
                 </div>
             </div>
         </div>
-        
-
     </div>
 
-    
+    <script src={% static "image_highlight.js" %}></script>
 </body>
 </html>
