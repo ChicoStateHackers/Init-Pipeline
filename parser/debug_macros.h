@@ -4,6 +4,7 @@
 #define DEBUG
 
 #ifdef DEBUG
+#include <iostream>
 #define DEBUG_STDERR(x) (std::cerr << (x))
 #define DEBUG_STDOUT(x) (std::cout << (x))
 #else 

@@ -1,16 +1,15 @@
-#include <iostream>
-
 #include "program.h"
 #include "state.h"
 #include "instruction.h"
 #include "debug_macros.h"
 
 
-int main()
+int main(int argc, char** argv)
 {
+    
     DEBUG_STDERR("Test Start!\n");
 
-    Program p("tst.asm");
+    Program p("tests/test0/tst0.asm");
     DEBUG_STDERR("Parsed the test file!\n");
 
     p.step_cycle();
