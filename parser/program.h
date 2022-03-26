@@ -16,7 +16,7 @@ class Program {
         // Constructor takes in the name of the file to be parsed
         Program(std::string file_name);
         ~Program();
-        State go_to_line();
+        State go_to_line(uint64_t ln);
         State step_cycle();
         State back_cycle();
 

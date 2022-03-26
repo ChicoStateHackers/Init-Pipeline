@@ -11,7 +11,7 @@ Program::~Program()
 
 };
 
-State Program::go_to_line()
+State Program::go_to_line(uint64_t ln)
 {
 
 };
