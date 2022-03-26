@@ -18,8 +18,9 @@ class State {
         Instruction in_writeback;
 
     public:
+        State(std::string in_fetch_nm, std::string in_decode_nm, std::string in_execute_nm, std::string in_memory_nm, std::string in_writeback_nm);
+        ~State();
 
-        State(Instruction f, Instruction d, Instruction e, Instruction m, Instruction wb);
         uint64_t get_cycle_num();
         std::string get_in_fetch();
         std::string get_in_decode();

@@ -20,6 +20,8 @@ class Program {
         State step_cycle();
         State back_cycle();
 
+        void generate_state_file();
+
 };
 
 #endif 
