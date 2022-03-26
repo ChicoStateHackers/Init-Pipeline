@@ -25,4 +25,8 @@ div.left_panel div.code_panel *{
     margin:0;
     display: block;
 }
+div.left_panel code.highlight{
+    border: 2px solid red;
+    background-color: aliceblue;
+}
 
