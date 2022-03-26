@@ -26,11 +26,21 @@
                     <button type="button"class="step btn-sm btn-primary m-1">step foreward</button>
                     <button type="button"class="step btn-sm btn-primary m-1">step backward</button>
                 </div>
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="file" name="myfile">
+                    <button type="submit">Upload</button>
+                  </form>
+                <!--
                 <input type="file"class="input_file"style="float:left;"></input>
                 <button type="button"class="upload_button btn-sm btn-success m-1" >upload</button>
+                -->
             </div>
 
             <div class="code_panel">
+                {% for instruction in instruction_data %}
+                    <code> {{ instruction.fetch }} </code>
+            {% endfor %}    
                 <!-- add <code></code> here for every line in the file -->
             </div>
 
