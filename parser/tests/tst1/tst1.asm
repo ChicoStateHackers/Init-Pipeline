@@ -1,2 +1,4 @@
 add
 sub
+mul
+div

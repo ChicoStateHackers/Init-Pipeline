@@ -1,0 +1,9 @@
+1,add,nop,nop,nop,nop
+2,sub,add,nop,nop,nop
+3,mul,sub,add,nop,nop
+4,div,mul,sub,add,nop
+5,nop,div,mul,sub,add
+6,nop,nop,div,mul,sub
+7,nop,nop,nop,div,mul
+8,nop,nop,nop,nop,div
+9,nop,nop,nop,nop,nop
