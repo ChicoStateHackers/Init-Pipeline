@@ -85,9 +85,9 @@ void Program::generate_states(){
         new_state->next = NULL;
 
         prev_state = new_state; 
-
+/*
         // Insert NOPs for Branches!!! 
-        if( instr == "B" || "B.cond")
+        if( instr == "B" || instr == "B.cond")
         {
             pipeline.push_front("NOP");
             pipeline.pop_back();
@@ -115,7 +115,7 @@ void Program::generate_states(){
         }
 
     }
-
+*/
     // Flush out the pipline
     for (size_t i = 0; i < 5; ++i)
     {
