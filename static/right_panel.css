@@ -38,6 +38,9 @@ div.right_panel div.cycle_object{
     text-align: center;
     height:20%;
 }
+div.right_panel div.cycle_object.highlight{
+    box-shadow: inset 0 0 20px rgba(3, 236, 252, 1);
+}
 
 div.right_panel div.cycle_object div.num{
     border:1px solid black;
