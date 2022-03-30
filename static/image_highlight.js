@@ -1,5 +1,4 @@
-const stageAmt = 5;
-const HIGHLIGHT_STRING = ' highlight';
+
 let cStages = [];
 let cImages = [];
 for(let i = 1;i<=stageAmt;i++){

@@ -9,20 +9,20 @@ for(let i = 0;i<codes.length;i++){
     codes[i].addEventListener('click', () => {
         
         cycles[i].scrollIntoView(true);
-        if(cycles[i].className.indexOf(' highlight') === -1){
+        if(cycles[i].className.indexOf(HIGHLIGHT_STRING) === -1){
             if(!!currentCycle){
-                currentCycle.className = currentCycle.className.replace(' highlight', '');
+                currentCycle.className = currentCycle.className.replace(HIGHLIGHT_STRING, '');
             }
             currentCycle = cycles[i];
-            cycles[i].className += ' highlight';
+            cycles[i].className += HIGHLIGHT_STRING;
         }
 
-        if(codes[i].className.indexOf(' highlight') === -1){
+        if(codes[i].className.indexOf(HIGHLIGHT_STRING) === -1){
             if(!!current){
-                current.className = current.className.replace(' highlight', '');
+                current.className = current.className.replace(HIGHLIGHT_STRING, '');
             }
             current = codes[i];
-            codes[i].className += ' highlight';
+            codes[i].className += HIGHLIGHT_STRING;
         }
     });
 }
