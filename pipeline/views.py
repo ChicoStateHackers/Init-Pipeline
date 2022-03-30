@@ -14,11 +14,14 @@ def home(request):
         #Use FileSystemStorage() to save the input file to the MEDIA_DIR and save it as user_input.asm
         myfile = request.FILES['myfile']
         fs = FileSystemStorage()
+
+        #If File Exists Overwrite
+        if os.path.exists(PARSER_DIR + '/user_input.asm'):
+            os.remove(PARSER_DIR + '/user_input.asm')
         filename = fs.save("user_input.asm", myfile)
 
         #Check if C executable doesn't exists
-        c_executable = os.path.join(PARSER_DIR, '/run')
-        if not os.path.exists(c_executable):
+        if not os.path.exists(PARSER_DIR + '/run'):
              print("Building C Executable File")
              subprocess.call(["make"], cwd=PARSER_DIR)
                 
