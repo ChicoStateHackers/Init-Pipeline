@@ -5,10 +5,8 @@ div.left_panel{
 div.left_panel div.control_buttons{
     height:25%;
 }
-div.left_panel div.stepper_button_wrapper{
-    display:flex;
-    justify-content: center;
-}
+
+
 
 div.left_panel div.code_panel{
     margin-top:10px;
@@ -20,13 +18,33 @@ div.left_panel div.code_panel{
     overflow: -moz-scrollbars-vertical; 
     overflow-y: scroll;
 }
-div.left_panel div.code_panel *{
-    padding:0;
+div.left_panel div.code_panel code{
+    width:100%;
+    padding:2px;
     margin:0;
-    display: block;
+    display: inline-block;
 }
-div.left_panel code.highlight{
+div.left_panel div.code_panel code.highlight{
     border: 2px solid red;
+    padding:0px;
     background-color: aliceblue;
 }
+div.left_panel div.code_panel code div.stepper_button_wrapper {
+    display:none;
+    padding:0;
+    margin:0;
+    line-height:0;
+}
+div.left_panel div.code_panel code div.stepper_button_wrapper.highlight {
+    display:inline;
+}
+div.left_panel div.code_panel code button.stepper_button {
+    font-size:12px;
+    margin:0;
+    padding:0;
+    width:25px;
+    height:20px;
+}
+
+
 

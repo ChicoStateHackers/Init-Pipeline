@@ -23,11 +23,11 @@
         <div class="left_panel col-sm-3 p-3">
 
             <div class="control_buttons">
-                <div class="stepper_button_wrapper btn-group col-sm-12 p-3">
+                <!-- <div class="stepper_button_wrapper btn-group col-sm-12 p-3">
                     <button type="button"class="step btn-sm btn-primary m-1">play</button>
                     <button type="button"class="step btn-sm btn-primary m-1">&#8594;</button>
                     <button type="button"class="step btn-sm btn-primary m-1">&#8592;</button>
-                </div>
+                </div> -->
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="file" name="myfile" class="input_file"style="float:left;">
@@ -41,7 +41,16 @@
 
             <div class="code_panel">
                 {% for instruction in instruction_data %}
-                    <code> {{ instruction.fetch }} </code>
+                    <code> 
+                        <span class="code_content">
+                            {{ instruction.fetch }} 
+                        </span>
+                        <div class="stepper_button_wrapper">
+                            <button type="button"class="stepper_button">&#8883;</button>
+                            <button type="button"class="stepper_button">&#8594;</button>
+                            <button type="button"class="stepper_button">&#8592;</button>
+                        </div>
+                    </code>
             {% endfor %}    
                 <!-- add <code></code> here for every line in the file -->
             </div>
