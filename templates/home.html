@@ -23,20 +23,11 @@
         <div class="left_panel col-sm-3 p-3">
 
             <div class="control_buttons">
-                <!-- <div class="stepper_button_wrapper btn-group col-sm-12 p-3">
-                    <button type="button"class="step btn-sm btn-primary m-1">play</button>
-                    <button type="button"class="step btn-sm btn-primary m-1">&#8594;</button>
-                    <button type="button"class="step btn-sm btn-primary m-1">&#8592;</button>
-                </div> -->
                 <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
                     <input type="file" name="myfile" class="input_file"style="float:left;">
                     <button type="submit" class="upload_button btn-sm btn-success m-1">Upload</button>
                   </form>
-                <!--
-                <input type="file"class="input_file"style="float:left;"></input>
-                <button type="button"class="upload_button btn-sm btn-success m-1" >upload</button>
-                -->
             </div>
 
             <div class="code_panel">
@@ -46,13 +37,12 @@
                             {{ instruction.fetch }} 
                         </span>
                         <div class="stepper_button_wrapper">
-                            <button type="button"class="stepper_button">&#8883;</button>
-                            <button type="button"class="stepper_button">&#8594;</button>
-                            <button type="button"class="stepper_button">&#8592;</button>
+                            <button class="stepper_button play" type="button">&#8883;</button>
+                            <button class="stepper_button step_forward" type="button">&#8594;</button>
+                            <button class="stepper_button step_backward" type="button">&#8592;</button>
                         </div>
                     </code>
             {% endfor %}    
-                <!-- add <code></code> here for every line in the file -->
             </div>
 
     
@@ -94,8 +84,6 @@
 
     
     <script src={% static "globals.js" %}></script>
-    <script src={% static "go_to_line.js" %}></script>
-    <script src={% static "image_highlight.js" %}></script>
     <script src={% static "animation.js" %}></script>
 </body>
 </html>

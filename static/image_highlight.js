@@ -1,2 +1,0 @@
-populateImageHighlightArrays();
-defineELsForCycleHover();

@@ -12,6 +12,9 @@ const CYCLE_STAGE_SELECTOR = 'div.cycle';
 const CYCLE_IMAGE_SELECTOR = 'img.circuit_image';
 const CODE_SELECTOR = 'code';
 const CYCLE_OBJECT_SELECTOR = 'div.cycle_object';
+const PLAY_BUTTON_SELECTOR = 'button.stepper_button.play';
+const STEP_FORWARD_BUTTON_SELECTOR = 'button.stepper_button.step_forward';
+const STEP_BACKWARD_BUTTON_SELECTOR = 'button.stepper_button.step_backward';
 
 // current selections
 var CURRENTLY_SELECTED_CYCLE;
@@ -24,6 +27,9 @@ var CYCLE_IMAGES = [];
 var CODES = [];
 var CYCLES = [];
 
+// error message for incorrect selector handling
+// this is created incase the home.html is updated and
+// needed class names are changed or updated
 var SELECTOR_ERROR_MESSAGE = function(obj){
     let varName = Object.keys(obj)[0];
     console.error(`Could not select an elment by: \n\t ${varName} = '${obj[varName]}'\n\tChoose a valid selector string for ${varName} in ${FILE_PATH}`);
@@ -49,6 +55,7 @@ var clearHighlight = function(elem){
 }
 
 var defineELsForCycleHover = function(){
+    populateImageHighlightArrays();
     for(let i = 0;i<stageAmt;i++){
         for(let myB of CYCLE_STAGES[i]){
             myB.onmouseover = function() {
@@ -78,9 +85,10 @@ var populateImageHighlightArrays = function(){
     let cStageHold;
     let cImageHold;
     for(let i = 1;i<=stageAmt;i++){
+        // selector error handling
         if((cStageHold = document.querySelectorAll(`${CYCLE_STAGE_SELECTOR}.b${i}`)).length === 0) 
             SELECTOR_ERROR_MESSAGE({CYCLE_STAGE_SELECTOR: `${CYCLE_STAGE_SELECTOR}.b${i}`});
-        if((cImageHold = document.querySelector(`${CYCLE_IMAGE_SELECTOR}.b${i}`)).length === 0) 
+        if((cImageHold = document.querySelector(`${CYCLE_IMAGE_SELECTOR}.b${i}`)) === null) 
             SELECTOR_ERROR_MESSAGE({CYCLE_IMAGE_SELECTOR: `${CYCLE_IMAGE_SELECTOR}.b${i}`});
 
         CYCLE_STAGES.push(cStageHold);
@@ -89,9 +97,10 @@ var populateImageHighlightArrays = function(){
 }
 
 
-var defineElsForCycleHover = function(){
+var defineELsForCodeSelect = function(playFn, fStepFn, bStepFn){
     CODES = [];
     CYCLES = [];
+    // selector error handling
     if((CODES = document.querySelectorAll(CODE_SELECTOR)).length === 0) SELECTOR_ERROR_MESSAGE({CODE_SELECTOR});
     if((CYCLES = document.querySelectorAll(CYCLE_OBJECT_SELECTOR)).length === 0) SELECTOR_ERROR_MESSAGE({CYCLE_OBJECT_SELECTOR});
     
@@ -115,11 +124,31 @@ var defineElsForCycleHover = function(){
             clearHighlight(CURRENTLY_SELECTED_BTN_WRAPPER);
             CURRENTLY_SELECTED_BTN_WRAPPER = CODES[i].querySelector('div.stepper_button_wrapper');
             appendHighlight(CURRENTLY_SELECTED_BTN_WRAPPER);
+
+            defineELsForAnimationButtons(CODES[i], playFn, fStepFn, bStepFn);
         };
     }
 }
 var clearELsForCodeClicks = function(){
     for(let i = 0;i<CODES.length;i++){
         CODES[i].onclick = null;
+        clearELsForAnimationButtons(CODES[i]);
     }
+}
+
+var defineELsForAnimationButtons = function(parElem, playFn, fStepFn, bStepFn){
+    let playBtn = parElem.querySelector(PLAY_BUTTON_SELECTOR);
+    let fStepBtn = parElem.querySelector(STEP_FORWARD_BUTTON_SELECTOR);
+    let bStepBtn = parElem.querySelector(STEP_BACKWARD_BUTTON_SELECTOR);
+    playBtn.onclick = playFn;
+    fStepBtn.onclick = fStepFn;
+    bStepBtn.onclick = bStepFn;
+}
+var clearELsForAnimationButtons = function(parElem){
+    let playBtn = parElem.querySelector(PLAY_BUTTON_SELECTOR);
+    let fStepBtn = parElem.querySelector(STEP_FORWARD_BUTTON_SELECTOR);
+    let bStepBtn = parElem.querySelector(STEP_BACKWARD_BUTTON_SELECTOR);
+    playBtn.onclick = null;
+    fStepBtn.onclick = null;
+    bStepBtn.onclick = null;
 }
