@@ -3,6 +3,9 @@ const FILE_PATH = scripts[scripts.length-1].src;
 
 // class name to be appended to elements. Signifies change in element style.
 const HIGHLIGHT_STRING = ' highlight';
+const ANIM_HIGHLIGHT_ALL = ' animation_white';
+const ANIM_HIGHLIGHT_CURRENT = ' animation_red';
+const ANIM_OPACITY = ' opacity_animation';
 
 // amount of stages or columns displayed per cycle
 const stageAmt = 5;
@@ -26,6 +29,13 @@ var CYCLE_STAGES = [];
 var CYCLE_IMAGES = [];
 var CODES = [];
 var CYCLES = [];
+var ANIMATION_CODES = [];
+var CYCLE_STAGES = [];
+
+var PLAYING = false;
+var interval = null;
+const ANIMATION_TIME_DELAY = 1000;
+var START_OF_ANIMATION;
 
 // error message for incorrect selector handling
 // this is created incase the home.html is updated and
@@ -44,6 +54,15 @@ var appendHighlight = function(elem){
         elem.className += HIGHLIGHT_STRING;
     }
 }
+var appendOtherClassName = function(elem, cName){
+    if(
+        !!elem && 
+        elem.className !== undefined && 
+        elem.className.indexOf(cName) === -1
+    ){
+        elem.className += cName;
+    }
+}
 var clearHighlight = function(elem){
     if(
         !!elem && 
@@ -51,6 +70,15 @@ var clearHighlight = function(elem){
         elem.className.indexOf(HIGHLIGHT_STRING) !== -1
     ){
         elem.className = elem.className.replace(HIGHLIGHT_STRING, '');
+    }
+}
+var clearOtherClassName = function(elem, cName){
+    if(
+        !!elem && 
+        !!elem.className && 
+        elem.className.indexOf(cName) !== -1
+    ){
+        elem.className = elem.className.replace(cName, '');
     }
 }
 
@@ -129,10 +157,11 @@ var defineELsForCodeSelect = function(playFn, fStepFn, bStepFn){
         };
     }
 }
-var clearELsForCodeClicks = function(){
+
+var clearELsForCodeSelect = function(alsoClearBtns = true){
     for(let i = 0;i<CODES.length;i++){
         CODES[i].onclick = null;
-        clearELsForAnimationButtons(CODES[i]);
+        if(alsoClearBtns) clearELsForAnimationButtons(CODES[i]);
     }
 }
 
