@@ -12,9 +12,9 @@
 
     <!-- My CSS -->
     {% load static %}
-    <link rel="stylesheet" href={% static "right_panel.css" %}>
-    <link rel="stylesheet" href={% static "left_panel.css" %}>
-    <link rel="stylesheet" href={% static "instruction_styles.css" %}>
+    <link rel="stylesheet" href={% static "css/right_panel.css" %}>
+    <link rel="stylesheet" href={% static "css/left_panel.css" %}>
+    <link rel="stylesheet" href={% static "css/instruction_styles.css" %}>
 </head>
 <body>
 
@@ -53,11 +53,11 @@
                 <div class="v_seperater bg-dark col-sm-12"style="position:absolute;bottom:0px;"></div>
                 <div class="h_seperater bg-dark"style="position:absolute;top:0px;left:0px;"></div>
                 <div class="circuit_image_holder">
-                    <img class="circuit_image b1" src={% static "fetch_circuit.png" %} />
-                    <img class="circuit_image b2" src={% static "decode_circuit.png" %} />
-                    <img class="circuit_image b3" src={% static "execute_circuit.png" %} />
-                    <img class="circuit_image b4" src={% static "memory_circuit.png" %} />
-                    <img class="circuit_image b5" src={% static "writeback_circuit.png" %} />
+                    <img class="circuit_image b1" src={% static "assets/fetch_circuit.png" %} />
+                    <img class="circuit_image b2" src={% static "assets/decode_circuit.png" %} />
+                    <img class="circuit_image b3" src={% static "assets/execute_circuit.png" %} />
+                    <img class="circuit_image b4" src={% static "assets/memory_circuit.png" %} />
+                    <img class="circuit_image b5" src={% static "assets/writeback_circuit.png" %} />
                 </div>
             </div>
 
@@ -83,7 +83,7 @@
     </div>
 
     
-    <script src={% static "globals.js" %}></script>
-    <script src={% static "animation.js" %}></script>
+    <script src={% static "js/globals.js" %}></script>
+    <script src={% static "js/animation.js" %}></script>
 </body>
 </html>
