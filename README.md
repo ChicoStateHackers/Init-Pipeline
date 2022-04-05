@@ -1,3 +1,3 @@
 # Init-Pipeline
-![Alt text](static/Init-Pipeline.png?raw=true "Title")
+![Alt text](static/assets/Init-Pipeline.png?raw=true "Title")
  
