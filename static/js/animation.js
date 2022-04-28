@@ -59,14 +59,17 @@ function onPlay(e){
 
         // for each stage in the animation, apply a class name to 
         // counteract the opacity and to add custom styles
+        // keep track of how many stages there are in the current animation
         // also store the stages in ANIMATION_CODES for later use in animation
         ANIMATION_CODES = [];
-        for(let i = 1, j = START_OF_ANIMATION;i<=5;i++, j++){
+        let amount_of_stages = 0;
+        for(let i = 1, j = START_OF_ANIMATION;i<=stageAmt && !!CYCLES[j];i++, j++){
             ANIMATION_CODES.push(CYCLES[j].querySelector(`${CYCLE_STAGE_SELECTOR}.b${i}`));
             appendOtherClassName(
                 ANIMATION_CODES[ANIMATION_CODES.length - 1], 
                 i === 1 ? ANIM_HIGHLIGHT_CURRENT : ANIM_HIGHLIGHT_ALL
             );
+            amount_of_stages++;
         }
 
         // highlight the first stage in the animation
@@ -106,7 +109,7 @@ function onPlay(e){
 
             // when we reach the end of the animation clear the interval and
             // properly reset the animation
-            if(count === 5){
+            if(count === amount_of_stages){
                 clearInterval(interval);
                 elem.style.display = 'block';
                 elem.nextElementSibling.style.display = 'none';
