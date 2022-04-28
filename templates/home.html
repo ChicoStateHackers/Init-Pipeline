@@ -37,7 +37,10 @@
                             {{ instruction.fetch }} 
                         </span>
                         <div class="stepper_button_wrapper">
-                            <button class="stepper_button play" type="button">&#8883;</button>
+                            <button class="stepper_button play" type="button">
+                                <div class="playSymbol">&#8883;</div>
+                                <div class="pauseSymbol" style="transform: rotate(90deg);display:none;">&#9868;</div>
+                            </button>
                             <button class="stepper_button step_forward" type="button">&#8594;</button>
                             <button class="stepper_button step_backward" type="button">&#8592;</button>
                         </div>

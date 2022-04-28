@@ -1,7 +1,8 @@
+// this is for error handling
 var scripts = document.querySelectorAll('script');
 const FILE_PATH = scripts[scripts.length-1].src;
 
-// class name to be appended to elements. Signifies change in element style.
+// class names to be appended to elements. Signifies change in element style.
 const HIGHLIGHT_STRING = ' highlight';
 const ANIM_HIGHLIGHT_ALL = ' animation_white';
 const ANIM_HIGHLIGHT_CURRENT = ' animation_red';
@@ -30,8 +31,8 @@ var CYCLE_IMAGES = [];
 var CODES = [];
 var CYCLES = [];
 var ANIMATION_CODES = [];
-var CYCLE_STAGES = [];
 
+// animation globals
 var PLAYING = false;
 var interval = null;
 const ANIMATION_TIME_DELAY = 1000;
@@ -45,6 +46,9 @@ var SELECTOR_ERROR_MESSAGE = function(obj){
     console.error(`Could not select an elment by: \n\t ${varName} = '${obj[varName]}'\n\tChoose a valid selector string for ${varName} in ${FILE_PATH}`);
 }
 
+// appends the HIGHLIGHT_STRING class name to elem.
+// this does not duplicate the HIGHLIGHT_STRING in the 
+// elems class name if called consecutively
 var appendHighlight = function(elem){
     if(
         !!elem && 
@@ -54,6 +58,10 @@ var appendHighlight = function(elem){
         elem.className += HIGHLIGHT_STRING;
     }
 }
+
+// appends cName to elem's class name.
+// this does not duplicate cName in the 
+// elems class name if called consecutively
 var appendOtherClassName = function(elem, cName){
     if(
         !!elem && 
@@ -63,6 +71,8 @@ var appendOtherClassName = function(elem, cName){
         elem.className += cName;
     }
 }
+
+// clears the HIGHLIGHT_STRING from elem's class name.
 var clearHighlight = function(elem){
     if(
         !!elem && 
@@ -72,6 +82,8 @@ var clearHighlight = function(elem){
         elem.className = elem.className.replace(HIGHLIGHT_STRING, '');
     }
 }
+
+// clears cName from elem's class name.
 var clearOtherClassName = function(elem, cName){
     if(
         !!elem && 
@@ -82,15 +94,24 @@ var clearOtherClassName = function(elem, cName){
     }
 }
 
+// defines event listeners for hovering over cycles.
+// allows the user to interact with the cycles by 
+// hovering over them
 var defineELsForCycleHover = function(){
     populateImageHighlightArrays();
     for(let i = 0;i<stageAmt;i++){
+        // for each code, myB, in each stage
         for(let myB of CYCLE_STAGES[i]){
+
+            // highlight that code and its respective image
+            // when the mouse is over the code
             myB.onmouseover = function() {
                 appendHighlight(CYCLE_IMAGES[i]);
                 appendHighlight(myB);
             };
-    
+            
+            // unhighlight the code and its respective image
+            // when the mouse is not over the code
             myB.onmouseout = function() {
                 clearHighlight(CYCLE_IMAGES[i]);
                 clearHighlight(myB);
@@ -98,6 +119,10 @@ var defineELsForCycleHover = function(){
         }
     }
 }
+
+// clears event listeners for hovering over cycles.
+// disallows the user to interact with the cycles
+// by hovering over them
 var clearELsForCycleHover = function(){
     for(let i = 0;i<stageAmt;i++){
         for(let myB of CYCLE_STAGES[i]){
@@ -107,34 +132,43 @@ var clearELsForCycleHover = function(){
         }
     }
 }
+
+// populates the CYCLE_STAGES and CYCLE_IMAGES arrays properly
 var populateImageHighlightArrays = function(){
     CYCLE_STAGES = [];
     CYCLE_IMAGES = [];
     let cStageHold;
     let cImageHold;
     for(let i = 1;i<=stageAmt;i++){
-        // selector error handling
+
+        // for each stage, select the current stage element and 
+        // the current image element and handle errors. 
+        // errors may arrise if the home.html page is modified so that
+        // the class names used to select elements are changed
         if((cStageHold = document.querySelectorAll(`${CYCLE_STAGE_SELECTOR}.b${i}`)).length === 0) 
             SELECTOR_ERROR_MESSAGE({CYCLE_STAGE_SELECTOR: `${CYCLE_STAGE_SELECTOR}.b${i}`});
         if((cImageHold = document.querySelector(`${CYCLE_IMAGE_SELECTOR}.b${i}`)) === null) 
             SELECTOR_ERROR_MESSAGE({CYCLE_IMAGE_SELECTOR: `${CYCLE_IMAGE_SELECTOR}.b${i}`});
 
+        // push the selections to each array
         CYCLE_STAGES.push(cStageHold);
         CYCLE_IMAGES.push(cImageHold);
     }
 }
 
-
+// defines event listeners for clicking on codes.
+// allows codes to be selected by clicking them. 
 var defineELsForCodeSelect = function(playFn, fStepFn, bStepFn){
     CODES = [];
     CYCLES = [];
-    // selector error handling
+    // select codes and cycles
     if((CODES = document.querySelectorAll(CODE_SELECTOR)).length === 0) SELECTOR_ERROR_MESSAGE({CODE_SELECTOR});
     if((CYCLES = document.querySelectorAll(CYCLE_OBJECT_SELECTOR)).length === 0) SELECTOR_ERROR_MESSAGE({CYCLE_OBJECT_SELECTOR});
     
+    // for each code, set an onclick event listener
     for(let i = 0;i<CODES.length;i++){
         CODES[i].onclick = function() {
-    
+            
             CYCLES[i].scrollIntoView(true);
             // unhighlight the last selected cycle
             // highlight the selected cycle 
@@ -158,6 +192,8 @@ var defineELsForCodeSelect = function(playFn, fStepFn, bStepFn){
     }
 }
 
+// clears event listeners for clicking on codes.
+// disallows codes to be selected by clicking them. 
 var clearELsForCodeSelect = function(alsoClearBtns = true){
     for(let i = 0;i<CODES.length;i++){
         CODES[i].onclick = null;
@@ -165,6 +201,8 @@ var clearELsForCodeSelect = function(alsoClearBtns = true){
     }
 }
 
+// define event listeners for animation buttons
+// allows the pause/play and others to be pressed
 var defineELsForAnimationButtons = function(parElem, playFn, fStepFn, bStepFn){
     let playBtn = parElem.querySelector(PLAY_BUTTON_SELECTOR);
     let fStepBtn = parElem.querySelector(STEP_FORWARD_BUTTON_SELECTOR);
@@ -173,6 +211,8 @@ var defineELsForAnimationButtons = function(parElem, playFn, fStepFn, bStepFn){
     fStepBtn.onclick = fStepFn;
     bStepBtn.onclick = bStepFn;
 }
+
+// clears event listeners for animation buttons
 var clearELsForAnimationButtons = function(parElem){
     let playBtn = parElem.querySelector(PLAY_BUTTON_SELECTOR);
     let fStepBtn = parElem.querySelector(STEP_FORWARD_BUTTON_SELECTOR);
