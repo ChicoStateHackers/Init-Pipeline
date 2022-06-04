@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: init-pipeline
+  labels:
+    app: init-pipeline
+spec:
+  selector:
+    matchLabels:
+      app: init-pipeline
+  template:
+    metadata:
+      labels:
+        app: init-pipeline
+    spec:
+      containers:
+      - image: init-pipeline
+        name: init-pipeline
+        ports:
+        - containerPort: 8000
